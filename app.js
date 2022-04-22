@@ -2,8 +2,39 @@
 Co je za úkol v tomto projektu:
 
 1) Do prvku s id="recepty" vygeneruj z dat seznam všech receptů z naší "databáze".
-HTML vzor, jak vygenerovaný recept vypadá, je zakomentovaný v index.html.
+HTML vzor, jak vygenerovaný recept vypadá, je zakomentovaný v index.html. */
 
+let seznamRecepty = document.querySelector('#recepty');
+
+
+function vygenerujRecepty(){
+
+    for (let i = 0; i < recepty.length; i++){ 
+        let recept = document.createElement('div');
+        recept.className = 'recept';
+        seznamRecepty.appendChild(recept);
+
+        let divObrazek = document.createElement('div');
+        divObrazek.className = 'recept-obrazek';
+        recept.appendChild(divObrazek);
+
+        let imgObrazek = document.createElement('img');
+        divObrazek.appendChild(imgObrazek);
+        imgObrazek.src = recepty[i].img;
+
+        let receptInfo = document.createElement('div');
+        receptInfo.className = 'recept-info';
+        recept.appendChild(receptInfo);
+
+        let nadpisReceptu = document.createElement('h3');
+        receptInfo.appendChild(nadpisReceptu);
+        nadpisReceptu.innerText = recepty[i].nadpis;
+    }
+}
+
+vygenerujRecepty();
+
+/*
 2) Doplň hledání - v hlavičce odkomentuj pole pro hledání. Pri kliknutí na tlačítko Hledat
 by se měl seznam receptů vyfiltrovat podle hledaného slova.
 
