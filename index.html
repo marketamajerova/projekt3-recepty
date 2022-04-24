@@ -24,31 +24,31 @@
                 
                 <label for="hledat">Hledat</label>
                 <div class="hledani-skupina">
-                    <input type="text" id="hledat" placeholder="Název receptu">
-                    <button>Hledat</button>
+                    <input type="text" id="hledat" placeholder="Název receptu" onchange="vyhledavat(event)">
+                    <button onclick="vyhledavat(event)">Hledat</button>
                 </div>
                
             </div>
             <div class="kategorie">
-                <!--
+                
                 <label for="kategorie">Kategorie</label>
-                <select id="kategorie">
+                <select id="kategorie" onchange="filtrujKategorii(event)">
                     <option value=""></option>
                     <option>Snídaně</option>
                     <option>Hlavní jídlo</option>
                     <option>Dezert</option>
                 </select>
-                -->
+               
             </div>
             <div class="razeni">
-                <!--
+                
                 <label for="razeni">Seřadit</label>
                 <select id="razeni">
                     <option value=""></option>
                     <option value="1">Od nejlepších</option>
                     <option value="2">Od nejhorších</option>
                 </select>
-                -->
+               
             </div>
         </header>
 
@@ -69,7 +69,7 @@
 
         <div class="recept-detail">
             <div class="recept-detail-obrazek">
-                    <img id="recept-foto" src="sem-doplnit-adresu-obrazku.jpg" alt="">
+                    <!-- <img id="recept-foto" src="sem-doplnit-adresu-obrazku.jpg" alt=""> -->
             </div>
 
             <div class="recept-detail-info">

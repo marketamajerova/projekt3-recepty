@@ -1,42 +1,75 @@
 /* 1) Do prvku s id="recepty" vygeneruj z dat seznam všech receptů z naší "databáze".
 HTML vzor, jak vygenerovaný recept vypadá, je zakomentovaný v index.html. */
 
-vygenerujRecepty();
+let seznamRecepty = document.querySelector('#recepty');
 
-function vygenerujRecepty(){
+vygenerujVsechnyRecepty();
 
-    let seznamRecepty = document.querySelector('#recepty');
 
+function vygenerujVsechnyRecepty(){
+    
     for (let i = 0; i < recepty.length; i++){ 
-        let recept = document.createElement('div');
-        recept.className = 'recept';
-        seznamRecepty.appendChild(recept);
-
-        let divObrazek = document.createElement('div');
-        divObrazek.className = 'recept-obrazek';
-        recept.appendChild(divObrazek);
-
-        let imgObrazek = document.createElement('img');
-        divObrazek.appendChild(imgObrazek);
-        imgObrazek.src = recepty[i].img;
-
-        let receptInfo = document.createElement('div');
-        receptInfo.className = 'recept-info';
-        recept.appendChild(receptInfo);
-
-        let nadpisReceptu = document.createElement('h3');
-        receptInfo.appendChild(nadpisReceptu);
-        nadpisReceptu.innerText = recepty[i].nadpis;
+        sestavRecept(i);
     }
+}
+
+function sestavRecept(i) {
+    let recept = document.createElement('div');
+    recept.className = 'recept';
+    seznamRecepty.appendChild(recept);
+
+    let divObrazek = document.createElement('div');
+    divObrazek.className = 'recept-obrazek';
+    recept.appendChild(divObrazek);
+
+    let imgObrazek = document.createElement('img');
+    divObrazek.appendChild(imgObrazek);
+    imgObrazek.src = recepty[i].img;
+
+    let receptInfo = document.createElement('div');
+    receptInfo.className = 'recept-info';
+    recept.appendChild(receptInfo);
+
+    let nadpisReceptu = document.createElement('h3');
+    receptInfo.appendChild(nadpisReceptu);
+    nadpisReceptu.innerText = recepty[i].nadpis;
 }
 
 /* 2) Doplň hledání - v hlavičce odkomentuj pole pro hledání. Pri kliknutí na tlačítko Hledat
 by se měl seznam receptů vyfiltrovat podle hledaného slova. */
 
+let vyhledavac = document.getElementById('hledat');
 
-
+function vyhledavat(){
+    let zadanyText = vyhledavac.value;
+    seznamRecepty.innerHTML = '';
+    
+    for(let i = 0; i < recepty.length; i++){
+      
+       if(recepty[i].nadpis.toLowerCase().includes(zadanyText.toLowerCase()) ){
+            sestavRecept(i);
+        } 
+    }  
+}
 
 /* 3) Doplň filtrovanání receptů podle kategorie. */ 
+
+function filtrujKategorii(){
+    let filtrKategorie = document.getElementById('kategorie').value;
+    seznamRecepty.innerText = '';
+    console.log(filtrKategorie);
+
+    for (let i = 0; i < recepty.length; i++){ 
+        if(recepty[i].kategorie == filtrKategorie){
+            sestavRecept(i);
+        } 
+    } 
+    
+    // if (filtrKategorie.value = ""){
+    //         vygenerujVsechnyRecepty();
+    //     }
+    
+}
 
 
 /* 4) Doplň řazení receptů podle hodnocení. */ 
