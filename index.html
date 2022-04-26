@@ -24,15 +24,15 @@
                 
                 <label for="hledat">Hledat</label>
                 <div class="hledani-skupina">
-                    <input type="text" id="hledat" placeholder="Název receptu" onchange="vyhledavat(event)">
-                    <button onclick="vyhledavat(event)">Hledat</button>
+                    <input type="text" id="hledat" placeholder="Název receptu" onkeydown="vyhledavat()">
+                    <button onclick="vyhledavat()">Hledat</button>
                 </div>
                
             </div>
             <div class="kategorie">
                 
                 <label for="kategorie">Kategorie</label>
-                <select id="kategorie" onchange="filtrujKategorii(event)">
+                <select id="kategorie" onchange="filtrujKategorii()">
                     <option value=""></option>
                     <option>Snídaně</option>
                     <option>Hlavní jídlo</option>

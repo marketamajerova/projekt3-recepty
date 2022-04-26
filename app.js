@@ -36,11 +36,13 @@ function sestavRecept(i) {
 }
 
 /* 2) Doplň hledání - v hlavičce odkomentuj pole pro hledání. Pri kliknutí na tlačítko Hledat
-by se měl seznam receptů vyfiltrovat podle hledaného slova. */
+by se měl seznam receptů vyfiltrovat podle hledaného slova. 
+Zatim nefunguje - onchange -> az po tom co kliknu mimo */
 
 let vyhledavac = document.getElementById('hledat');
 
 function vyhledavat(){
+    
     let zadanyText = vyhledavac.value;
     seznamRecepty.innerHTML = '';
     
@@ -48,16 +50,18 @@ function vyhledavat(){
       
        if(recepty[i].nadpis.toLowerCase().includes(zadanyText.toLowerCase()) ){
             sestavRecept(i);
+            console.log('aaa');
         } 
+
     }  
 }
 
-/* 3) Doplň filtrovanání receptů podle kategorie. */ 
+/* 3) Doplň filtrovanání receptů podle kategorie. 
+Zatim nefunguje - hlavni jidla nejsou vsechna + po zvoleni prazdneho filtru se nenactou vsechny recepty*/ 
 
 function filtrujKategorii(){
     let filtrKategorie = document.getElementById('kategorie').value;
     seznamRecepty.innerText = '';
-    console.log(filtrKategorie);
 
     for (let i = 0; i < recepty.length; i++){ 
         if(recepty[i].kategorie == filtrKategorie){
@@ -65,14 +69,15 @@ function filtrujKategorii(){
         } 
     } 
     
-    // if (filtrKategorie.value = ""){
-    //         vygenerujVsechnyRecepty();
-    //     }
-    
+    if (filtrKategorie == ""){
+            vygenerujVsechnyRecepty();
+        }
 }
 
 
 /* 4) Doplň řazení receptů podle hodnocení. */ 
+
+
 
 
 /* 5) Na recepty v seznamu by mělo jít kliknout a na pravé polovině, se objeví detail receptu.
