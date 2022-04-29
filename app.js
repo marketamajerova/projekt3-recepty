@@ -36,8 +36,7 @@ function sestavRecept(i) {
 }
 
 /* 2) Doplň hledání - v hlavičce odkomentuj pole pro hledání. Pri kliknutí na tlačítko Hledat
-by se měl seznam receptů vyfiltrovat podle hledaného slova. 
-Zatim nefunguje - onchange -> az po tom co kliknu mimo */
+by se měl seznam receptů vyfiltrovat podle hledaného slova.*/
 
 let vyhledavac = document.getElementById('hledat');
 
@@ -56,8 +55,7 @@ function vyhledavat(){
     }  
 }
 
-/* 3) Doplň filtrovanání receptů podle kategorie. 
-Zatim nefunguje - hlavni jidla nejsou vsechna + po zvoleni prazdneho filtru se nenactou vsechny recepty*/ 
+/* 3) Doplň filtrovanání receptů podle kategorie.*/ 
 
 function filtrujKategorii(){
     let filtrKategorie = document.getElementById('kategorie').value;
@@ -74,8 +72,54 @@ function filtrujKategorii(){
         }
 }
 
-
 /* 4) Doplň řazení receptů podle hodnocení. */ 
+function serad(){
+    let filtrSeradit = document.getElementById('razeni').value;
+    seznamRecepty.innerText = '';
+    console.log(filtrSeradit);
+    
+    if (filtrSeradit == 1){  
+
+        recepty.sort(function (a, b){
+            return b.hodnoceni - a.hodnoceni;
+        })
+        console.log(recepty);
+
+        for (let i = 0; i < recepty.length; i++){ 
+            sestavRecept(i);
+        }
+    } else if (filtrSeradit == 2) {
+
+        recepty.sort(function (a, b){
+            return a.hodnoceni - b.hodnoceni;
+        })
+        console.log(recepty);
+
+        for (let i = 0; i < recepty.length; i++){ 
+            sestavRecept(i);
+        }
+    } 
+    
+    if (filtrSeradit == ""){
+        vygenerujVsechnyRecepty();
+    }
+
+}
+
+
+
+    // if (filtrSeradit == "Od nejlepších"){  
+    //     recepty.sort(function (a, b){
+    //         return b.hodnoceni - a.hodnoceni;
+    //     })
+    //     console.log(recepty);
+
+    //     for (let i = 0; i < recepty.length; i++){ 
+    //         sestavRecept(i);
+    //     }
+    // } else {
+    //     vygenerujVsechnyRecepty;
+    // }
 
 
 
