@@ -2,9 +2,18 @@
 HTML vzor, jak vygenerovaný recept vypadá, je zakomentovaný v index.html. */
 
 let seznamRecepty = document.querySelector('#recepty');
-
 vygenerujVsechnyRecepty();
 
+let nazevDetail = document.getElementById('recept-nazev');
+nazevDetail.innerText = JSON.parse(localStorage.posledniReceptNazev);
+let fotoReceptu = document.getElementById('recept-foto');
+fotoReceptu.src = localStorage.posledniReceptFoto;
+let kategorieDetail = document.getElementById('recept-kategorie');
+kategorieDetail.innerText = JSON.parse(localStorage.posledniReceptKategorie);
+let hodnoceniDetail = document.getElementById('recept-hodnoceni');
+hodnoceniDetail.innerText = JSON.parse(localStorage.posledniReceptHodnoceni);
+let popisDetail = document.getElementById('recept-popis');
+popisDetail.innerText = JSON.parse(localStorage.posledniReceptPopis);
 
 function vygenerujVsechnyRecepty(){
     
@@ -112,11 +121,6 @@ budKlikatelny();
 
 // presun orecept-foto
 function budKlikatelny(){  
-    let fotoReceptu = document.getElementById('recept-foto');
-    let kategorieDetail = document.getElementById('recept-kategorie');
-    let hodnoceniDetail = document.getElementById('recept-hodnoceni');
-    let nazevDetail = document.getElementById('recept-nazev');
-    let popisDetail = document.getElementById('recept-popis');
 
     let receptyLi = document.querySelectorAll('.recept');
 
@@ -128,10 +132,16 @@ function budKlikatelny(){
             nazevDetail.innerText = recepty[i].nadpis;
             popisDetail.innerText = recepty[i].popis;
 
-            console.log('delam neco');
+            localStorage.posledniReceptNazev = JSON.stringify(nazevDetail.innerText);
+            localStorage.posledniReceptKategorie = JSON.stringify(kategorieDetail.innerText);
+            localStorage.posledniReceptHodnoceni = JSON.stringify(hodnoceniDetail.innerText);
+            localStorage.posledniReceptPopis = JSON.stringify(popisDetail.innerText);
+            localStorage.posledniReceptFoto = fotoReceptu.src;
         });
     }
+
 }
 
 
 /* 6) Poslední vybraný recept ulož do Local Storage, aby se při novém otevření aplikace načetl. */
+
