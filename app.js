@@ -24,7 +24,6 @@ function vygenerujVsechnyRecepty(){
 }
 
 function sestavRecept(i) {
-    //i = recepty[i].index;
     let recept = document.createElement('div');
     recept.className = 'recept';
     seznamRecepty.appendChild(recept);
@@ -61,9 +60,7 @@ function vyhledavat(){
       
        if(recepty[i].nadpis.toLowerCase().includes(zadanyText.toLowerCase()) ){
             sestavRecept(i);
-            console.log('aaa');
         } 
-
     }  
 }
 
@@ -120,7 +117,6 @@ Doplň patričné údaje receptu do HTML prvků s ID recept-foto, recept-kategor
 recept-hodnoceni, recept-nazev, recept-popis. */
 budKlikatelny();
 
-// presun orecept-foto
 function budKlikatelny(){  
 
     let receptyLi = document.querySelectorAll('.recept');
@@ -132,9 +128,8 @@ function budKlikatelny(){
             hodnoceniDetail.innerText = recepty[i].hodnoceni;
             nazevDetail.innerText = recepty[i].nadpis;
             popisDetail.innerText = recepty[i].popis;
-            
-            /* 6) Poslední vybraný recept ulož do Local Storage, aby se při novém otevření aplikace načetl. */
 
+            /* 6) Poslední vybraný recept ulož do Local Storage, aby se při novém otevření aplikace načetl. */
             localStorage.posledniReceptNazev = JSON.stringify(nazevDetail.innerText);
             localStorage.posledniReceptKategorie = JSON.stringify(kategorieDetail.innerText);
             localStorage.posledniReceptHodnoceni = JSON.stringify(hodnoceniDetail.innerText);
