@@ -10,6 +10,7 @@ function vygenerujVsechnyRecepty(){
     
     for (let i = 0; i < recepty.length; i++){ 
         sestavRecept(i);
+        budKlikatelny();
     }
 }
 
@@ -33,6 +34,7 @@ function sestavRecept(i) {
     let nadpisReceptu = document.createElement('h3');
     receptInfo.appendChild(nadpisReceptu);
     nadpisReceptu.innerText = recepty[i].nadpis;
+    budKlikatelny();
 }
 
 /* 2) Doplň hledání - v hlavičce odkomentuj pole pro hledání. Pri kliknutí na tlačítko Hledat
@@ -103,27 +105,33 @@ function serad(){
 }
 
 
-
-    // if (filtrSeradit == "Od nejlepších"){  
-    //     recepty.sort(function (a, b){
-    //         return b.hodnoceni - a.hodnoceni;
-    //     })
-    //     console.log(recepty);
-
-    //     for (let i = 0; i < recepty.length; i++){ 
-    //         sestavRecept(i);
-    //     }
-    // } else {
-    //     vygenerujVsechnyRecepty;
-    // }
-
-
-
-
 /* 5) Na recepty v seznamu by mělo jít kliknout a na pravé polovině, se objeví detail receptu.
 Doplň patričné údaje receptu do HTML prvků s ID recept-foto, recept-kategorie,
 recept-hodnoceni, recept-nazev, recept-popis. */
+budKlikatelny();
 
+// presun orecept-foto
+function budKlikatelny(){  
+    let fotoReceptu = document.getElementById('recept-foto');
+    let kategorieDetail = document.getElementById('recept-kategorie');
+    let hodnoceniDetail = document.getElementById('recept-hodnoceni');
+    let nazevDetail = document.getElementById('recept-nazev');
+    let popisDetail = document.getElementById('recept-popis');
+
+    let receptyLi = document.querySelectorAll('.recept');
+
+    for (let i = 0; i < receptyLi.length; i++){ 
+        receptyLi[i].addEventListener('click',function(){
+            fotoReceptu.src = recepty[i].img;
+            kategorieDetail.innerText = recepty[i].kategorie;
+            hodnoceniDetail.innerText = recepty[i].hodnoceni;
+            nazevDetail.innerText = recepty[i].nadpis;
+            popisDetail.innerText = recepty[i].popis;
+
+            console.log('delam neco');
+        });
+    }
+}
 
 
 /* 6) Poslední vybraný recept ulož do Local Storage, aby se při novém otevření aplikace načetl. */
