@@ -76,25 +76,21 @@ function filtrujKategorii(){
 function serad(){
     let filtrSeradit = document.getElementById('razeni').value;
     seznamRecepty.innerText = '';
-    console.log(filtrSeradit);
     
     if (filtrSeradit == 1){  
 
         recepty.sort(function (a, b){
             return b.hodnoceni - a.hodnoceni;
         })
-        console.log(recepty);
-
         for (let i = 0; i < recepty.length; i++){ 
             sestavRecept(i);
         }
+
     } else if (filtrSeradit == 2) {
 
         recepty.sort(function (a, b){
             return a.hodnoceni - b.hodnoceni;
         })
-        console.log(recepty);
-
         for (let i = 0; i < recepty.length; i++){ 
             sestavRecept(i);
         }
